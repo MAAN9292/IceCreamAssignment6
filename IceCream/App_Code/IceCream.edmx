@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RealStarIceCreamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryInfo">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EnquiryInfo">
+          <Key>
+            <PropertyRef Name="EnquiryId" />
+          </Key>
+          <Property Name="EnquiryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile" Type="bigint" />
+          <Property Name="Subject" Type="varchar" MaxLength="10" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="EnquiryDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ImageSlider">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhotoName" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ExtName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PhotoType" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoSize" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loginInfo">
+          <Key>
+            <PropertyRef Name="LoginInfoId" />
+          </Key>
+          <Property Name="LoginInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Question" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductInfo">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductTitle" Type="varchar(max)" Nullable="false" />
+          <Property Name="PhotoName" Type="varchar(max)" Nullable="false" />
+          <Property Name="ExtName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PhotoType" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoSize" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <Association Name="FK__ProductIn__Categ__68487DD7">
+          <End Role="CategoryInfo" Type="Self.CategoryInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductInfo" Type="Self.ProductInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryInfo">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="ProductInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetCustomersPageWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetProductsPageWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetProductsPageWiseForSelectedCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="prcAddProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductTitle" Type="varchar(max)" Mode="In" />
+          <Parameter Name="PhotoName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ExtName" Type="varchar" Mode="In" />
+          <Parameter Name="PhotoType" Type="varchar" Mode="In" />
+          <Parameter Name="PhotoSize" Type="int" Mode="In" />
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="prcAddSliderPhoto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PhotoName" Type="varchar" Mode="In" />
+          <Parameter Name="ExtName" Type="varchar" Mode="In" />
+          <Parameter Name="PhotoType" Type="varchar" Mode="In" />
+          <Parameter Name="PhotoSize" Type="int" Mode="In" />
+        </Function>
+        <Function Name="prcInsertEnquiryInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Mobile" Type="bigint" Mode="In" />
+          <Parameter Name="Subject" Type="varchar" Mode="In" />
+          <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EnquiryDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="prcSelectAllProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="prcSelectCategorywiseProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PrcUpdatePswd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Oldpswd" Type="varchar" Mode="In" />
+          <Parameter Name="NewPswd" Type="varchar" Mode="In" />
+          <Parameter Name="userid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PrcViewAllEnquiries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="prcViewCategoriesInDescOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="RealStarIceCreamModelStoreContainer">
+          <EntitySet Name="CategoryInfo" EntityType="Self.CategoryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnquiryInfo" EntityType="Self.EnquiryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageSlider" EntityType="Self.ImageSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loginInfo" EntityType="Self.loginInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductInfo" EntityType="Self.ProductInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ProductIn__Categ__68487DD7" Association="Self.FK__ProductIn__Categ__68487DD7">
+            <End Role="CategoryInfo" EntitySet="CategoryInfo" />
+            <End Role="ProductInfo" EntitySet="ProductInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RealStarIceCreamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoryInfo">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductInfoes" Relationship="Self.FK__ProductIn__Categ__68487DD7" FromRole="CategoryInfo" ToRole="ProductInfo" />
+        </EntityType>
+        <EntityType Name="EnquiryInfo">
+          <Key>
+            <PropertyRef Name="EnquiryId" />
+          </Key>
+          <Property Name="EnquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Int64" />
+          <Property Name="Subject" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnquiryDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ImageSlider">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhotoName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoType" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoSize" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loginInfo">
+          <Key>
+            <PropertyRef Name="LoginInfoId" />
+          </Key>
+          <Property Name="LoginInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductInfo">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoType" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoSize" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="CategoryInfo" Relationship="Self.FK__ProductIn__Categ__68487DD7" FromRole="ProductInfo" ToRole="CategoryInfo" />
+        </EntityType>
+        <Association Name="FK__ProductIn__Categ__68487DD7">
+          <End Role="CategoryInfo" Type="Self.CategoryInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductInfo" Type="Self.ProductInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryInfo">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="ProductInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RealStarIceCreamEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryInfoes" EntityType="Self.CategoryInfo" />
+          <EntitySet Name="EnquiryInfoes" EntityType="Self.EnquiryInfo" />
+          <EntitySet Name="ImageSliders" EntityType="Self.ImageSlider" />
+          <EntitySet Name="loginInfoes" EntityType="Self.loginInfo" />
+          <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
+          <AssociationSet Name="FK__ProductIn__Categ__68487DD7" Association="Self.FK__ProductIn__Categ__68487DD7">
+            <End Role="CategoryInfo" EntitySet="CategoryInfoes" />
+            <End Role="ProductInfo" EntitySet="ProductInfoes" />
+          </AssociationSet>
+          <FunctionImport Name="GetCustomersPageWise">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductsPageWise">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductsPageWiseForSelectedCategory">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="prcAddProducts" ReturnType="Collection(Decimal)">
+            <Parameter Name="ProductTitle" Mode="In" Type="String" />
+            <Parameter Name="PhotoName" Mode="In" Type="String" />
+            <Parameter Name="ExtName" Mode="In" Type="String" />
+            <Parameter Name="PhotoType" Mode="In" Type="String" />
+            <Parameter Name="PhotoSize" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="prcAddSliderPhoto" ReturnType="Collection(Decimal)">
+            <Parameter Name="PhotoName" Mode="In" Type="String" />
+            <Parameter Name="ExtName" Mode="In" Type="String" />
+            <Parameter Name="PhotoType" Mode="In" Type="String" />
+            <Parameter Name="PhotoSize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="prcInsertEnquiryInfo">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="Int64" />
+            <Parameter Name="Subject" Mode="In" Type="String" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+            <Parameter Name="EnquiryDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="prcSelectAllProducts" ReturnType="Collection(RealStarIceCreamModel.prcSelectAllProducts_Result)" />
+          <FunctionImport Name="prcSelectCategorywiseProducts" ReturnType="Collection(RealStarIceCreamModel.prcSelectCategorywiseProducts_Result)">
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PrcUpdatePswd">
+            <Parameter Name="Oldpswd" Mode="In" Type="String" />
+            <Parameter Name="NewPswd" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PrcViewAllEnquiries" ReturnType="Collection(RealStarIceCreamModel.PrcViewAllEnquiries_Result)" />
+          <FunctionImport Name="prcViewCategoriesInDescOrder" ReturnType="Collection(RealStarIceCreamModel.prcViewCategoriesInDescOrder_Result)" />
+        </EntityContainer>
+        <ComplexType Name="prcSelectAllProducts_Result">
+          <Property Type="Int64" Name="SrNo" Nullable="true" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductTitle" Nullable="false" />
+          <Property Type="String" Name="PhotoName" Nullable="false" />
+          <Property Type="String" Name="ExtName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PhotoType" Nullable="false" MaxLength="1000" />
+          <Property Type="Int32" Name="PhotoSize" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="prcSelectCategorywiseProducts_Result">
+          <Property Type="Int64" Name="SrNo" Nullable="true" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductTitle" Nullable="false" />
+          <Property Type="String" Name="PhotoName" Nullable="false" />
+          <Property Type="String" Name="ExtName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PhotoType" Nullable="false" MaxLength="1000" />
+          <Property Type="Int32" Name="PhotoSize" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PrcViewAllEnquiries_Result">
+          <Property Type="Int64" Name="SrNo" Nullable="true" />
+          <Property Type="Int32" Name="EnquiryId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="Mobile" Nullable="true" />
+          <Property Type="String" Name="Subject" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="String" Name="EnquiryDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="prcViewCategoriesInDescOrder_Result">
+          <Property Type="Int64" Name="SrNo" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RealStarIceCreamModelStoreContainer" CdmEntityContainer="RealStarIceCreamEntities2">
+          <EntitySetMapping Name="CategoryInfoes">
+            <EntityTypeMapping TypeName="RealStarIceCreamModel.CategoryInfo">
+              <MappingFragment StoreEntitySet="CategoryInfo">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnquiryInfoes">
+            <EntityTypeMapping TypeName="RealStarIceCreamModel.EnquiryInfo">
+              <MappingFragment StoreEntitySet="EnquiryInfo">
+                <ScalarProperty Name="EnquiryId" ColumnName="EnquiryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="EnquiryDate" ColumnName="EnquiryDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageSliders">
+            <EntityTypeMapping TypeName="RealStarIceCreamModel.ImageSlider">
+              <MappingFragment StoreEntitySet="ImageSlider">
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="PhotoSize" ColumnName="PhotoSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginInfoes">
+            <EntityTypeMapping TypeName="RealStarIceCreamModel.loginInfo">
+              <MappingFragment StoreEntitySet="loginInfo">
+                <ScalarProperty Name="LoginInfoId" ColumnName="LoginInfoId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductInfoes">
+            <EntityTypeMapping TypeName="RealStarIceCreamModel.ProductInfo">
+              <MappingFragment StoreEntitySet="ProductInfo">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="PhotoSize" ColumnName="PhotoSize" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCustomersPageWise" FunctionName="RealStarIceCreamModel.Store.GetCustomersPageWise" />
+          <FunctionImportMapping FunctionImportName="GetProductsPageWise" FunctionName="RealStarIceCreamModel.Store.GetProductsPageWise" />
+          <FunctionImportMapping FunctionImportName="GetProductsPageWiseForSelectedCategory" FunctionName="RealStarIceCreamModel.Store.GetProductsPageWiseForSelectedCategory" />
+          <FunctionImportMapping FunctionImportName="prcAddProducts" FunctionName="RealStarIceCreamModel.Store.prcAddProducts" />
+          <FunctionImportMapping FunctionImportName="prcAddSliderPhoto" FunctionName="RealStarIceCreamModel.Store.prcAddSliderPhoto" />
+          <FunctionImportMapping FunctionImportName="prcInsertEnquiryInfo" FunctionName="RealStarIceCreamModel.Store.prcInsertEnquiryInfo" />
+          <FunctionImportMapping FunctionImportName="prcSelectAllProducts" FunctionName="RealStarIceCreamModel.Store.prcSelectAllProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RealStarIceCreamModel.prcSelectAllProducts_Result">
+                <ScalarProperty Name="SrNo" ColumnName="SrNo" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="PhotoSize" ColumnName="PhotoSize" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prcSelectCategorywiseProducts" FunctionName="RealStarIceCreamModel.Store.prcSelectCategorywiseProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RealStarIceCreamModel.prcSelectCategorywiseProducts_Result">
+                <ScalarProperty Name="SrNo" ColumnName="SrNo" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="PhotoSize" ColumnName="PhotoSize" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PrcUpdatePswd" FunctionName="RealStarIceCreamModel.Store.PrcUpdatePswd" />
+          <FunctionImportMapping FunctionImportName="PrcViewAllEnquiries" FunctionName="RealStarIceCreamModel.Store.PrcViewAllEnquiries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RealStarIceCreamModel.PrcViewAllEnquiries_Result">
+                <ScalarProperty Name="SrNo" ColumnName="SrNo" />
+                <ScalarProperty Name="EnquiryId" ColumnName="EnquiryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="EnquiryDate" ColumnName="EnquiryDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prcViewCategoriesInDescOrder" FunctionName="RealStarIceCreamModel.Store.prcViewCategoriesInDescOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RealStarIceCreamModel.prcViewCategoriesInDescOrder_Result">
+                <ScalarProperty Name="SrNo" ColumnName="SrNo" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

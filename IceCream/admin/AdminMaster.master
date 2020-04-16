@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="admin_AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../images/logo with ice cream & yellow.png" rel="icon"/>
+    <!-- Styles -->
+    <link href="assets/css/lib/font-awesome.min.css" rel="stylesheet"/>
+    <link href="assets/css/lib/themify-icons.css" rel="stylesheet"/>
+    <link href="assets/css/lib/calendar/fullcalendar.css" rel="stylesheet" />
+    <link href="assets/css/lib/menubar/sidebar.css" rel="stylesheet"/>
+    <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet"/>
+    
+    <link href="assets/css/lib/helper.css" rel="stylesheet"/>
+    <link href="assets/css/style.css" rel="stylesheet"/>
+    <link href="assets/css/lib/sweetalert/sweetalert.css" rel="stylesheet"/>
+     <link href="assets/css/Custom.css" rel="stylesheet"/>
+    <style type="text/css">
+         .page_enabled, .page_disabled
+        {
+            display: inline-block;
+            /*height: 20px;
+            min-width: 20px;
+            line-height: 20px;*/
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+        }
+        .page_enabled
+        {
+            background-color: #eee;
+            color: #000;
+        }
+        .page_disabled
+        {
+            background-color: #878787;
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+         <!-- sidebar BEGIN -->
+        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+      <div class="nano">
+        <div class="nano-content">
+          <div class="logo"><a href="Dashboard.aspx"> <img src="../images/logo1.png"/></a></div>
+           <ul>
+           
+            <li id="page1" runat="server"><a href="Dashboard.aspx"><i class="ti-home"></i> Dashboard </a></li>
+            <li id="page2" runat="server"><a href="AddSliderImages.aspx"><i class="ti-image"></i> Banners </a></li>
+           <li id="page4" runat="server"><a href="AddCategories.aspx"><i class="ti-folder"></i> Categories</a></li>
+           <li id="page3" runat="server"><a href="AddProducts.aspx"><i class="ti-package"></i> Products</a></li>
+           <li id="page5" runat="server"><a href="Enquiry.aspx"><i class="ti-write"></i> Enquiries</a></li>
+            
+            <li>
+              <asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click"><i class="ti-close"></i>Logout</asp:LinkButton>
+            </li>
+           </ul>
+        </div>
+      </div>
+    </div>
+    <!-- sidebar END -->
+        
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="float-left">
+                            <div class="hamburger sidebar-toggle">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="float-right">
+                            <ul>
+                                
+                                <li title="Today's Enquiry" class="header-icon dib"><i class="ti-email"></i><span runat="server" id="cc">1</span>
+                                  
+                                </li>
+                                <li class="header-icon dib"><span class="user-avatar">Admin <i class="ti-angle-down f-s-10"></i></span>
+                                    <div class="drop-down dropdown-profile">
+                                        
+                                        <div class="dropdown-content-body">
+                                            <ul>
+                                                
+                                                <li><a href="ChangePassword.aspx"><i class="ti-settings"></i> <span>Change Password</span></a></li>
+
+                                                <li>
+                                                    <asp:LinkButton ID="btnLogOut2" runat="server" OnClick="btnLogOut_Click"><i class="ti-power-off"></i><span>Logout</span></asp:LinkButton>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="content-wrap">
+      <div class="main">
+        <div class="container-fluid">
+
+        <asp:ContentPlaceHolder id="adminContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+             </div>
+      </div>
+    </div>
+ 
+        <!-- jquery vendor -->
+    <script src="assets/js/lib/jquery.min.js"></script>
+    <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+    <!-- nano scroller -->
+    <script src="assets/js/lib/menubar/sidebar.js"></script>
+   
+    <!-- sidebar -->
+    <script src="assets/js/lib/bootstrap.min.js">
+      
+
+    </script>
+       
+    <!-- bootstrap -->
+
+
+
+    <script src="assets/js/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/js/lib/moment/moment.js"></script>
+    <script src="assets/js/lib/calendar/fullcalendar.min.js"></script>
+    <script src="assets/js/lib/calendar/fullcalendar-init.js"></script>
+
+        <script src="assets/js/lib/sweetalert/sweetalert.min.js"></script>
+    <!-- scripit init-->
+    <script src="assets/js/lib/sweetalert/sweetalert.init.js"></script>
+    <!-- scripit init-->
+    <script src="assets/js/scripts.js"></script>
+    
+    <!-- scripit init-->
+    </form>
+</body>
+</html>

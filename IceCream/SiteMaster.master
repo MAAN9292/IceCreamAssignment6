@@ -1,0 +1,446 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteMaster.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="icon" href="images/logo with ice cream & yellow.png" />
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css"/>
+
+    
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css"/>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/CustomMain.css"/>
+<!--===============================================================================================-->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="src/skdslider.min.js"></script>
+<link href="src/skdslider.css" rel="stylesheet">
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('#demo1').skdslider({
+          slideSelector: '.slide',
+          delay:5000,
+          animationSpeed:2000,
+          showNextPrev:true,
+          showPlayButton:true,
+          autoSlide:true,
+          animationType:'fading'
+        });
+
+        
+    });
+</script>
+<style type="text/css">
+  body { margin:0; padding:0;}
+  .demo-code{ background-color:#ffffff; border:1px solid #333333; display:block; padding:10px;}
+  .option-table td{ border-bottom:1px solid #eeeeee;}
+</style>
+</head>
+<body>
+    <form id="form1" runat="server">
+   <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_default_style" style="right:0px; bottom:0px; ">
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+       <a class="a2a_button_whatsapp"></a>
+    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+    
+
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						<i class="fa fa-map-marker"></i>&nbsp;
+                       Auckland, New Zealand
+					</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							<i class="fa fa-mobile"></i>&nbsp;
+                            +64-XXXX-XXXXX
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							<i class="fa fa-whatsapp"></i>&nbsp;
+                           +64-XXXX-XXXXX
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							<i class="fa fa-envelope"></i>&nbsp;
+                            icecreameparlour@gmail.com
+						</a>
+
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a href="Home.aspx" class="logo">
+						<img src="images/logo1.png" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+                        <ul class="main-menu">
+							<li id="page1" runat="server" class="">
+								<a href="Home.aspx">Home</a>
+								
+							</li>
+
+							<%--<li>
+								<a href="product.html">Shop</a>
+							</li>--%>
+
+							<li id="page2" runat="server">
+								<a href="Products.aspx">Products</a>
+							</li>
+
+
+							<li id="page4" runat="server">
+								<a href="About.aspx">About</a>
+							</li>
+
+							<li id="page5" runat="server">
+								<a href="Contact.aspx">Contact</a>
+							</li>
+						</ul>
+					
+					</div>	
+
+					
+				</nav>
+			</div>	
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="Home.aspx"><img src="images/logo with ice cream & yellow.png" alt="IMG-LOGO"/></a>
+			</div>
+
+			
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="topbar-mobile">
+				<li>
+						<div class="left-top-bar">
+						<i class="fa fa-map-marker"></i>&nbsp;
+                         Auckland, New Zealand
+					</div>
+				</li>
+
+				<li>
+					
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							<i class="fa fa-mobile"></i>&nbsp;
+                         +64-2253-71255
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							<i class="fa fa-whatsapp"></i>&nbsp;
+                          +64-2253-71255
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							<i class="fa fa-envelope"></i>&nbsp;
+                            realstaricecream@yahoo.com
+						</a>
+
+						
+					</div>
+				</li>
+			</ul>
+
+			<ul class="main-menu-m">
+				<li id="page11" runat="server">
+					<a href="Home.aspx">Home</a>
+					
+					
+				</li>
+
+				<%--<li>
+					<a href="product.html">Shop</a>
+				</li>--%>
+
+				<li id="page22" runat="server">
+					<a href="Products.aspx">Products</a>
+				</li>
+
+
+				<li id="page44" runat="server">
+					<a href="About.aspx">About</a>
+				</li>
+
+				<li id="page55" runat="server">
+					<a href="Contact.aspx">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+	</header>
+
+        <asp:ContentPlaceHolder id="myContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    <!-- Footer -->
+       
+	<footer class="bg3 p-t-75 p-b-32">
+		        <div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
+                    <asp:Repeater ID="repCategories" runat="server">
+                        <HeaderTemplate>
+                             <ul>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                           
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								<%# Eval("CategoryName") %>
+
+							</a>
+						</li>
+
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+					
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Quick Links
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="Products.aspx" class="stext-107 cl7 hov-cl1 trans-04">
+								Products
+							</a>
+						</li>
+
+						
+						<li class="p-b-10">
+							<a href="About.aspx" class="stext-107 cl7 hov-cl1 trans-04">
+								About Us
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="Contact.aspx" class="stext-107 cl7 hov-cl1 trans-04">
+								Contact Us
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Auckland, New Zealand
+					</p>
+
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
+             
+
+			</div>
+
+			
+		</div>
+       
+	</footer>
+         <div class="container-fluid" style="background-color: #1d1c1c;">
+             <div class="p-t-40">
+				
+				<p class="stext-107 cl6 txt-center">
+					
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Maninder</a> 
+
+				</p>
+                 <br />
+                 
+			</div>
+         </div>
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+
+    </form>
+   <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404192523267284&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--===============================================================================================-->	
+
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+	<script>
+        $('.parallax100').parallax100();
+	</script>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script>
+		$('.js-addwish-b2').on('click', function(e){
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
